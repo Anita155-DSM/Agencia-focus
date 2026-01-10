@@ -1,68 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Plus+Jakarta+Sans:wght@300;500;700&display=swap');
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  --bg-dark: #05070a;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --accent-color: #00f2ff; /* Cyan futurista */
+  --purple-glow: #7000ff;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  background-color: var(--bg-dark);
+  color: #ffffff;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  overflow-x: hidden;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+h1, h2, .navbar-brand {
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 2px;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+/* Estilo para los links del Navbar */
+.nav-link {
+  transition: all 0.3s ease;
+  position: relative;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.nav-link:hover {
+  color: #00f2ff !important;
+  text-shadow: 0 0 10px rgba(0, 242, 255, 0.8);
+}
+
+/* Línea animada debajo de los links */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: #00f2ff;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Links del Footer */
+.footer-link {
+  color: rgba(255, 255, 255, 0.5);
+  transition: 0.4s;
+}
+
+.footer-link:hover {
+  color: #7000ff;
+  filter: drop-shadow(0 0 8px #7000ff);
+  transform: translateY(-3px);
+}
+
+/* Tamaño de fuente extra pequeño para detalles */
+.x-small {
+  font-size: 0.7rem;
+}
+
+/* Efecto Neón para el Logo y Textos */
+.text-gradient {
+  background: linear-gradient(90deg, var(--accent-color), var(--purple-glow));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Estilo Glassmorphism para las Cards */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  transition: all 0.4s ease;
+}
+
+.glass-card:hover {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 25px rgba(0, 242, 255, 0.2);
+  transform: translateY(-10px);
+}
+
+/* Animación de fondo futurista */
+.bg-glow {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(112, 0, 255, 0.1) 0%, transparent 50%);
+  z-index: -1;
+}
+
+/* Contenedor con perspectiva para el efecto 3D de Framer Motion */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  transition: box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+  box-shadow: 0 0 30px rgba(0, 242, 255, 0.15); /* Brillo cyan */
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* Animación para los iconos */
+.icon-container i {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.glass-card:hover .icon-container i {
+  transform: scale(1.2) rotate(10deg);
+}
+
+.font-monospace {
+  font-family: 'Courier New', Courier, monospace;
 }
