@@ -42,7 +42,7 @@ const Nosotros = () => {
               </li>
             </ul>
 
-            <button className="btn btn-outline-primary">Leer más de nuestra historia</button>
+            {/* <button className="btn btn-outline-primary">Leer más de nuestra historia</button> */}
           </div>
         </div>
       </div>

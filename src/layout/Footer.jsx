@@ -2,36 +2,35 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="py-5 mt-5" style={{ background: 'linear-gradient(to top, #05070a, #0a0e14)', borderTop: '1px solid rgba(112, 0, 255, 0.3)' }}>
+    <footer className="py-4" style={{ 
+      background: 'rgba(5, 7, 10, 0.8)', 
+      backdropFilter: 'blur(10px)',
+      borderTop: '1px solid rgba(0, 242, 255, 0.1)' 
+    }}>
       <div className="container">
-        <div className="row gy-4 align-items-center text-center text-md-start">
+        <div className="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
           
-          <div className="col-md-4">
-            <img src="/logo-agencia.png" alt="Logo" width="120" className="mb-3" />
-            <p className="text-secondary small">
-              Liderando la vanguardia del desarrollo digital con interfaces de próxima generación.
-            </p>
+          {/* Lado Izquierdo: Logo y Copyright */}
+          <div className="d-flex align-items-center">
+            <img 
+              src="/logo-agencia.webp" 
+              alt="Logo" 
+              width="50" 
+              className="me-3 opacity-75" 
+              style={{ filter: 'grayscale(100%) brightness(1.5)' }} 
+            />
+            <span className="text-secondary font-monospace" style={{ fontSize: '0.75rem', letterSpacing: '1px' }}>
+              © {new Date().getFullYear()} FOCUS_SYSTEMS // DESARROLLADO POR: PÉREZ ANAHI
+            </span>
           </div>
 
-          <div className="col-md-4 text-center">
-            <div className="d-flex justify-content-center gap-4">
-              <a href="#" className="footer-link"><i className="bi bi-discord fs-3"></i></a>
-              <a href="#" className="footer-link"><i className="bi bi-github fs-3"></i></a>
-              <a href="#" className="footer-link"><i className="bi bi-linkedin fs-3"></i></a>
-            </div>
+          {/* Lado Derecho: Redes con efecto Glow */}
+          <div className="d-flex gap-4">
+            <a href="https://github.com/Anita155-DSM" className="nav-link p-0 text-secondary fs-5 social-icon"><i className="bi bi-github"></i></a>
+            <a href="https://www.linkedin.com/in/anahi-perez-621018397/" className="nav-link p-0 text-secondary fs-5 social-icon"><i className="bi bi-linkedin"></i></a>
+            <a href="https://x.com/yvng_ann" className="nav-link p-0 text-secondary fs-5 social-icon"><i className="bi bi-twitter-x"></i></a>
           </div>
 
-          <div className="col-md-4 text-md-end">
-            <p className="text-uppercase small fw-bold mb-1" style={{ color: '#00f2ff' }}>Sistemas Activos</p>
-            <p className="text-secondary x-small">Status: 100% Operativo</p>
-          </div>
-
-        </div>
-
-        <div className="mt-5 pt-4 border-top border-dark text-center">
-          <p className="text-muted" style={{ fontSize: '0.75rem', letterSpacing: '2px' }}>
-            © {new Date().getFullYear()} AGENCIA FOCUS // DESARROLLADO POR [TU NOMBRE]
-          </p>
         </div>
       </div>
     </footer>

@@ -1,5 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Plus+Jakarta+Sans:wght@300;500;700&display=swap');
 
+/* Ajustes para dispositivos móviles */
+@media (max-width: 768px) {
+  .display-1 {
+    font-size: 3rem; /* El título del Hero no se verá gigante en el celular */
+  }
+  
+  .glass-card {
+    padding: 1.5rem !important; /* Menos espacio interno en móviles */
+    margin-bottom: 1rem;
+  }
+
+  /* Reducimos la intensidad del blur en móviles para mejorar el rendimiento */
+  .glass-card, .navbar {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  
+  /* Ajuste del logo para que no ocupe toda la pantalla */
+  .navbar-brand img {
+    width: 80px !important;
+  }
+}
+
 :root {
   --bg-dark: #05070a;
   --glass-bg: rgba(255, 255, 255, 0.05);
@@ -122,4 +145,25 @@ h1, h2, .navbar-brand {
 
 .font-monospace {
   font-family: 'Courier New', Courier, monospace;
+}
+
+.social-icon {
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  color: var(--accent-color) !important;
+  transform: translateY(-2px);
+  filter: drop-shadow(0 0 5px var(--accent-color));
+}
+
+/* Para que el footer siempre se pegue abajo si hay poco contenido */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
 }

@@ -6,7 +6,7 @@ const Hero = () => {
         {/* <span className="badge rounded-pill border border-info text-info mb-3 px-3 py-2">
           AGENCIA DIGITAL 4.0
         </span> */}
-        <h1 className="display-1 fw-bold mb-4">
+        <h1 className="display-1 fw-bold mb-4 mt-4" >
           DISEÑAMOS EL <br />
           <span className="text-gradient">FUTURO DIGITAL</span>
         </h1>

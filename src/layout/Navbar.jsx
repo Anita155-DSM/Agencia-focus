@@ -14,9 +14,9 @@ const Navbar = () => {
       <div className="container">
         <a className="navbar-brand d-flex align-items-center" href="#inicio">
           <img 
-            src="/logo-agencia.png" 
+            src="/logo-agencia.webp" 
             alt="Logo" 
-            width="100" 
+            width="90" 
             className="me-2"
             style={{ filter: 'drop-shadow(0 0 5px rgba(0, 242, 255, 0.5))' }} // Brillo al logo
           />
