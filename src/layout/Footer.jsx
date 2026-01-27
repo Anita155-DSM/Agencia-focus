@@ -125,7 +125,7 @@ const Footer = () => {
             }}>
               Crafted by{' '}
               <a 
-                href="https://www.linkedin.com/in/tu-perfil-linkedin" 
+                href="https://www.linkedin.com/in/anahi-perez-621018397/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-decoration-none"
