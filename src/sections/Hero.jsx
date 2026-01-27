@@ -1,25 +1,53 @@
+import { motion } from 'framer-motion';
+
 const Hero = () => {
   return (
-    <section id="inicio" className="vh-100 d-flex align-items-center position-relative">
-      <div className="bg-glow"></div> {/* Elemento decorativo de fondo */}
-      <div className="container text-center">
-        {/* <span className="badge rounded-pill border border-info text-info mb-3 px-3 py-2">
-          AGENCIA DIGITAL 4.0
-        </span> */}
-        <h1 className="display-1 fw-bold mb-4 mt-4" >
-          DISEÑAMOS EL <br />
-          <span className="text-gradient">FUTURO DIGITAL</span>
-        </h1>
-        <p className="lead mb-5 text-secondary mx-auto" style={{ maxWidth: '600px' }}>
-          Más que código, creamos interfaces inteligentes y experiencias inmersivas que rompen los límites de lo convencional.
-        </p>
-        <div className="d-flex justify-content-center gap-3">
-          <a href="#contacto" className="btn btn-primary btn-lg px-4 shadow-lg">Iniciar Proyecto</a>
-          <a href="#servicios" className="btn btn-outline-light btn-lg px-4">Ver Tecnología</a>
-        </div>
+    <section 
+      id="home" 
+      className="hero-section" 
+      style={{ 
+        backgroundImage: `url(/setup-hero.webp)`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
+      <div className="hero-overlay"></div>
+       
+      <div className="container hero-content">
+        <motion.h1 
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="display-3 text-center mb-4 fw-bold"
+          style={{ fontFamily: 'Orbitron, sans-serif' }}
+        >
+          THE ENDGAME <span className="text-gradient">CURATED FOR YOU</span>
+        </motion.h1>
+        
+        <motion.p 
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="lead text-center text-white-50 mx-auto mb-5"
+          style={{ maxWidth: '750px', fontWeight: '300', letterSpacing: '0.5px' }}
+        >
+          Ditch the endless research. We’ve field-tested the latest 2026 tech to bring you 
+          <strong> the gold standard of gaming.</strong> High performance, zero compromise.
+        </motion.p>
+        
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="hero-buttons d-flex justify-content-center gap-3"
+        >
+          <a href="#top-picks" className="btn-amazon px-4">SHOP THE ELITE LIST</a>
+          <a href="#guides" className="btn-outline px-4">EXPLORE GUIDES</a>
+        </motion.div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;

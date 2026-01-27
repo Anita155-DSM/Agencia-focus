@@ -1,23 +1,23 @@
-import Navbar from './layout/Navbar'
-import Hero from './sections/Hero'
-import Nosotros from './sections/Nosotros'
-import Servicios from './sections/Servicios'
-import Contacto from './sections/Contacto'
-import Footer from './layout/Footer'
-import ParticlesBg from './components/ParticlesBg'
+import Navbar from './layout/Navbar';
+import Footer from './layout/Footer';
+import Hero from './sections/Hero';
+import TopPicks from './sections/TopPicks'; // Antes era 'Servicios'
+import BuyingGuides from './sections/BuyingGuides'; // Antes era 'Nosotros'
+import Contact from './sections/Contact';
+import ParticlesBg from './components/ParticlesBg';
 
 function App() {
   return (
-    <>
+    <div className="app-container">
       <ParticlesBg />
       <Navbar />
       <Hero />
-      <Nosotros />
-      <Servicios />
-      <Contacto />
+      <TopPicks />
+      <BuyingGuides />
+      <Contact />
       <Footer />
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;

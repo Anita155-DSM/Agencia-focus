@@ -1,169 +1,375 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Plus+Jakarta+Sans:wght@300;500;700&display=swap');
-
-/* Ajustes para dispositivos móviles */
-@media (max-width: 768px) {
-  .display-1 {
-    font-size: 3rem; /* El título del Hero no se verá gigante en el celular */
-  }
-  
-  .glass-card {
-    padding: 1.5rem !important; /* Menos espacio interno en móviles */
-    margin-bottom: 1rem;
-  }
-
-  /* Reducimos la intensidad del blur en móviles para mejorar el rendimiento */
-  .glass-card, .navbar {
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
-  
-  /* Ajuste del logo para que no ocupe toda la pantalla */
-  .navbar-brand img {
-    width: 80px !important;
-  }
-}
+/* ==========================================================================
+   1. CONFIGURACIÓN GLOBAL Y VARIABLES
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap');
 
 :root {
   --bg-dark: #05070a;
-  --glass-bg: rgba(255, 255, 255, 0.05);
+  --bg-card: rgba(13, 17, 23, 0.6); 
   --glass-border: rgba(255, 255, 255, 0.1);
-  --accent-color: #00f2ff; /* Cyan futurista */
+  --accent-color: #00f2ff; 
   --purple-glow: #7000ff;
+  --nav-height: 80px;
+}
+
+html {
+  background-color: var(--bg-dark);
+  scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--bg-dark);
+  margin: 0;
   color: #ffffff;
   font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: transparent; /* Permite ver partículas */
   overflow-x: hidden;
 }
 
-h1, h2, .navbar-brand {
+body, #root, main {
+  background-color: transparent !important;
+}
+
+/* --- Fondo de Partículas --- */
+#tsparticles {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: -1 !important;
+  background-color: var(--bg-dark);
+}
+
+/* --- Tipografía y Gradientes --- */
+h1, h2, h3, .navbar-brand {
   font-family: 'Orbitron', sans-serif;
   letter-spacing: 2px;
 }
 
-/* Estilo para los links del Navbar */
-.nav-link {
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-.nav-link:hover {
-  color: #00f2ff !important;
-  text-shadow: 0 0 10px rgba(0, 242, 255, 0.8);
-}
-
-/* Línea animada debajo de los links */
-.nav-link::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 1px;
-  bottom: 0;
-  left: 0;
-  background-color: #00f2ff;
-  transition: width 0.3s ease;
-}
-
-.nav-link:hover::after {
-  width: 100%;
-}
-
-/* Links del Footer */
-.footer-link {
-  color: rgba(255, 255, 255, 0.5);
-  transition: 0.4s;
-}
-
-.footer-link:hover {
-  color: #7000ff;
-  filter: drop-shadow(0 0 8px #7000ff);
-  transform: translateY(-3px);
-}
-
-/* Tamaño de fuente extra pequeño para detalles */
-.x-small {
-  font-size: 0.7rem;
-}
-
-/* Efecto Neón para el Logo y Textos */
 .text-gradient {
   background: linear-gradient(90deg, var(--accent-color), var(--purple-glow));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-weight: bold;
 }
 
-/* Estilo Glassmorphism para las Cards */
-.glass-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-border);
-  border-radius: 20px;
-  transition: all 0.4s ease;
-}
-
-.glass-card:hover {
-  border-color: var(--accent-color);
-  box-shadow: 0 0 25px rgba(0, 242, 255, 0.2);
-  transform: translateY(-10px);
-}
-
-/* Animación de fondo futurista */
-.bg-glow {
+/* ==========================================================================
+   2. NAVBAR (ESTILO ELECTRIZANTE)
+   ========================================================================== */
+.navbar {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: radial-gradient(circle at 50% 50%, rgba(112, 0, 255, 0.1) 0%, transparent 50%);
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 25px 0;
+  background: transparent;
+}
+
+.nav-shrunk {
+  padding: 12px 0;
+  background: rgba(5, 7, 10, 0.85) !important;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Efecto de Rayo/Glow en el contenedor de los links */
+.nav-hover-bg {
+  position: absolute;
+  top: 10%;
+  left: 0;
+  right: 0;
+  bottom: 10%;
+  background: rgba(0, 242, 255, 0.05);
+  border-radius: 8px;
   z-index: -1;
+  border: 1px solid rgba(0, 242, 255, 0.3);
+  box-shadow: 0 0 20px rgba(0, 242, 255, 0.2), inset 0 0 10px rgba(0, 242, 255, 0.1);
 }
 
-/* Contenedor con perspectiva para el efecto 3D de Framer Motion */
-.glass-card {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  transition: box-shadow 0.3s ease;
-}
-
-.glass-card:hover {
-  box-shadow: 0 0 30px rgba(0, 242, 255, 0.15); /* Brillo cyan */
-  background: rgba(255, 255, 255, 0.06);
-}
-
-/* Animación para los iconos */
-.icon-container i {
-  display: inline-block;
-  transition: transform 0.3s ease;
-}
-
-.glass-card:hover .icon-container i {
-  transform: scale(1.2) rotate(10deg);
-}
-
-.font-monospace {
-  font-family: 'Courier New', Courier, monospace;
-}
-
-.social-icon {
+.nav-link {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 1.5px;
+  color: rgba(255, 255, 255, 0.7) !important;
+  padding: 10px 20px !important;
   transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
 }
 
-.social-icon:hover {
+.nav-link:hover {
   color: var(--accent-color) !important;
-  transform: translateY(-2px);
+  text-shadow: 0 0 8px var(--accent-color);
+}
+
+.text-cyan {
+  color: var(--accent-color);
   filter: drop-shadow(0 0 5px var(--accent-color));
 }
 
-/* Para que el footer siempre se pegue abajo si hay poco contenido */
-#root {
+/* --- Efecto de Rayo al Click --- */
+/* Contenedor del rayo para que ocupe toda la altura del link */
+.electric-bolt-container {
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: calc(100% + 20px);
+  pointer-events: none;
+  z-index: 20;
   display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  justify-content: center;
 }
 
-main {
-  flex: 1;
+.electric-bolt-container svg {
+  width: 40px; /* Ancho de la descarga */
+  filter: drop-shadow(0 0 10px #fff) drop-shadow(0 0 20px var(--accent-color));
+}
+
+/* Animación de destello en toda la pantalla cuando cae el rayo (opcional) */
+.electric-bolt-container::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  background: white;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0;
+  animation: flash-strike 0.3s ease-out;
+}
+
+@keyframes flash-strike {
+  0% { transform: translate(-50%, -50%) scale(0); opacity: 0.8; }
+  100% { transform: translate(-50%, -50%) scale(3); opacity: 0; }
+}
+/* Mejora del indicador de Hover para que sea más "eléctrico" */
+.nav-hover-bg {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  right: 5%;
+  bottom: 10%;
+  background: rgba(0, 242, 255, 0.1);
+  border-radius: 4px;
+  z-index: -1;
+  border-top: 1px solid var(--accent-color);
+  border-bottom: 1px solid var(--accent-color);
+  /* Animación sutil de parpadeo */
+  animation: electric-flicker 2s infinite;
+}
+
+
+@keyframes electric-flicker {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+  98% { opacity: 1; }
+  99% { opacity: 0.4; }
+}
+
+/* ==========================================================================
+   3. HERO SECTION
+   ========================================================================== */
+.hero-section {
+  padding-top: var(--nav-height); /* Ajusta a la altura del Navbar */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden; /* Evita desbordamiento de la imagen */
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  /* Efecto de Parallax sutil */
+  background-attachment: fixed; 
+}
+
+/* Capa de Oscurecimiento y Transición (para que el texto se lea bien) */
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  /* Difuminado ultra suave con transición extendida especialmente al final */
+  background: linear-gradient(180deg, 
+    rgba(5, 7, 10, 0.1) 0%,      /* Muy transparente - imagen totalmente visible */
+    rgba(5, 7, 10, 0.25) 30%,    /* Transición muy gradual */
+    rgba(5, 7, 10, 0.45) 50%,    /* Progresión lenta */
+    rgba(5, 7, 10, 0.6) 65%,     /* Difuminado suave */
+    rgba(5, 7, 10, 0.72) 75%,    /* Transición más gradual en el final */
+    rgba(5, 7, 10, 0.82) 85%,    /* Continúa el fade suave */
+    rgba(5, 7, 10, 0.9) 92%,     /* Casi completo */
+    rgba(5, 7, 10, 0.97) 97%,    /* Transición ultra suave final */
+    rgb(5, 7, 10) 100%           /* Color sólido final */
+  );
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  /* Asegura que el contenido esté bien espaciado */
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.hero-section h1 {
+  text-shadow: 0 0 30px rgba(0, 242, 255, 0.5), 0 0 15px rgba(255, 255, 255, 0.3);
+  margin-bottom: 1.5rem;
+  font-size: 4rem; /* Un poco más grande para impacto */
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.hero-section p.lead {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Media Queries para Responsive (Hero) */
+@media (max-width: 992px) {
+  .hero-section h1 {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding-top: var(--nav-height); /* En móviles, padding puede ser más pequeño */
+  }
+  .hero-section h1 {
+    font-size: 2.2rem;
+  }
+  .hero-section p.lead {
+    font-size: 1rem;
+  }
+}
+/* ==========================================================================
+   4. PRODUCTOS Y TARJETAS (TOP PICKS)
+   ========================================================================== */
+.product-card, .glass-card {
+  background: linear-gradient(145deg, rgba(13, 17, 23, 0.8) 0%, rgba(5, 7, 10, 0.9) 100%);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.product-card:hover {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 30px rgba(0, 242, 255, 0.2);
+  transform: translateY(-8px);
+}
+
+/* Efecto rotativo sutil en el borde de las cards */
+.product-card::after {
+  content: "";
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: conic-gradient(transparent, var(--accent-color), transparent 30%);
+  animation: rotateBorder 8s linear infinite;
+  z-index: -1;
+  opacity: 0.1;
+}
+
+@keyframes rotateBorder {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ==========================================================================
+   5. BOTONES
+   ========================================================================== */
+.btn-amazon {
+  position: relative;
+  background: linear-gradient(135deg, var(--accent-color) 0%, #00d4ff 100%);
+  color: #000 !important;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 16px 32px;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 20px rgba(0, 242, 255, 0.5), 0 0 40px rgba(0, 242, 255, 0.3);
+  overflow: hidden;
+  letter-spacing: 1px;
+}
+
+.btn-amazon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-amazon:hover::before {
+  left: 100%;
+}
+
+.btn-amazon:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 30px rgba(0, 242, 255, 0.7), 0 0 60px rgba(0, 242, 255, 0.5);
+}
+
+.btn-outline {
+  position: relative;
+  background: transparent;
+  color: #fff;
+  border: 2px solid var(--purple-glow);
+  padding: 14px 28px;
+  border-radius: 8px;
+  transition: all 0.4s ease;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+  display: inline-block;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(112, 0, 255, 0.3);
+}
+
+.btn-outline::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(112, 0, 255, 0.4), transparent);
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease, height 0.5s ease;
+}
+
+.btn-outline:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn-outline:hover {
+  border-color: var(--purple-glow);
+  color: #fff;
+  background: rgba(112, 0, 255, 0.15);
+  box-shadow: 0 0 30px rgba(112, 0, 255, 0.6), 0 4px 20px rgba(112, 0, 255, 0.4);
+  transform: translateY(-3px) scale(1.05);
 }

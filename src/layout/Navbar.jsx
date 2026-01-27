@@ -1,43 +1,99 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Zap, Home, MousePointer2, BookOpen, Mail } from 'lucide-react';
+
+const navLinks = [
+  { name: 'HOME', href: '#home', icon: <Home size={18} /> },
+  { name: 'TOP PICKS', href: '#top-picks', icon: <MousePointer2 size={18} /> },
+  { name: 'GUIDES', href: '#guides', icon: <BookOpen size={18} /> },
+  { name: 'CONTACT', href: '#contact', icon: <Mail size={18} /> },
+];
 
 const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [hoveredLink, setHoveredLink] = useState(null);
+  const [clickedLink, setClickedLink] = useState(null); // Estado para el rayo al click
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Función para disparar el rayo
+  const handleElectricClick = (name) => {
+    setClickedLink(name);
+    setTimeout(() => setClickedLink(null), 400); // El rayo dura 400ms
+  };
+
   return (
-    <nav 
-      className="navbar navbar-expand-lg navbar-dark fixed-top py-3" 
-      style={{ 
-        background: 'rgba(5, 7, 10, 0.7)', 
-        backdropFilter: 'blur(15px)',
-        borderBottom: '1px solid rgba(0, 242, 255, 0.2)', // Borde cyan sutil
-        boxShadow: '0 4px 30px rgba(0, 0, 0, 0.5)'
-      }}
-    >
+    <nav className={`navbar navbar-expand-lg fixed-top ${isScrolled ? 'nav-shrunk' : ''}`}>
       <div className="container">
-        <a className="navbar-brand d-flex align-items-center" href="#inicio">
-          <img 
-            src="/logo-agencia.webp" 
-            alt="Logo" 
-            width="90" 
-            className="me-2"
-            style={{ filter: 'drop-shadow(0 0 5px rgba(0, 242, 255, 0.5))' }} // Brillo al logo
-          />
-          {/* <span className="fw-bold fs-4" style={{ letterSpacing: '3px', color: '#00f2ff' }}>;P</span> */}
-        </a>
-        
-        <button className="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        
+        <motion.a 
+          className="navbar-brand d-flex align-items-center" 
+          href="#"
+          whileTap={{ scale: 0.95 }}
+        >
+          <Zap className="me-2 text-cyan" fill="currentColor" size={24} />
+          <span className="text-gradient">FOCUSGAMING</span>
+        </motion.a>
+
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
-            {['Inicio', 'Nosotros', 'Servicios', 'Contacto'].map((item) => (
-              <li className="nav-item" key={item}>
-                <a 
-                  className="nav-link px-3 text-uppercase fw-light" 
-                  href={`#${item.toLowerCase()}`}
-                  style={{ fontSize: '0.85rem', letterSpacing: '1px' }}
-                >
-                  {item}
+          <ul className="navbar-nav ms-auto position-relative">
+            {navLinks.map((link) => (
+              <li 
+                key={link.name} 
+                className="nav-item position-relative"
+                onMouseEnter={() => setHoveredLink(link.name)}
+                onMouseLeave={() => setHoveredLink(null)}
+                onClick={() => handleElectricClick(link.name)}
+              >
+                <a className="nav-link d-flex align-items-center" href={link.href}>
+                  <span className="nav-icon me-1">{link.icon}</span>
+                  {link.name}
                 </a>
+
+                {/* EFECTO 1: Glow suave de seguimiento (Hover) */}
+                <AnimatePresence>
+                  {hoveredLink === link.name && (
+                    <motion.div
+                      layoutId="nav-electric-glow"
+                      className="nav-hover-bg"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                    />
+                  )}
+                </AnimatePresence>
+
+                {/* EFECTO 2: El Rayo Electrizante (Click) */}
+                <AnimatePresence>
+                  {clickedLink === link.name && (
+                    <motion.div
+                      className="electric-bolt-container"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                    >
+                      {/* Dibujamos un rayo en zigzag con SVG */}
+                      <svg width="100%" height="100%" viewBox="0 0 40 100" preserveAspectRatio="none">
+                        <motion.path
+                          d="M20 0 L35 30 L10 50 L30 70 L5 100" // Forma de zigzag
+                          fill="none"
+                          stroke="white"
+                          strokeWidth="3"
+                          initial={{ pathLength: 0, filter: "blur(0px)" }}
+                          animate={{ 
+                            pathLength: 1, 
+                            filter: ["blur(0px)", "blur(2px)", "blur(0px)"],
+                            x: [0, -2, 2, -1, 0] // Vibración del rayo
+                          }}
+                          transition={{ duration: 0.2, ease: "easeIn" }}
+                        />
+                      </svg>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </li>
             ))}
           </ul>
