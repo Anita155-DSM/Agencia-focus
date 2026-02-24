@@ -6,7 +6,7 @@ const products = [
     name: "Logitech G Pro X Superlight 2",
     tag: "The #1 Esports Mouse", // Tag de autoridad
     desc: "The mouse that ended the cable era. 60g of pure precision with the HERO 2 sensor. Stop fighting your gear and start hitting those flick shots. The industry standard for a reason.",
-    link: "https://www.amazon.com/Logitech-Superlight-Lightweight-Wireless-Gaming/dp/B0C7S89Y6X",
+    link: "https://amzn.to/4aAkDNV",
     image: "/mouse2.webp",
     featured: true 
   },
@@ -15,7 +15,7 @@ const products = [
     name: "SteelSeries Apex Pro TKL",
     tag: "World's Fastest", // Tag de velocidad
     desc: "Cheating? No. Just faster. OmniPoint 2.0 switches give you 11x quicker response times. Adjust actuation distance to eliminate misclicks forever.",
-    link: "https://www.amazon.com/SteelSeries-Apex-Pro-TKL-Wireless/dp/B0BF67DM6K",
+    link: "https://amzn.to/4r1907z",
     image: "/teclado.webp",
     featured: false
   },
@@ -24,7 +24,7 @@ const products = [
     name: "SteelSeries Arctis Nova Pro",
     tag: "Infinite Power", // Tag de beneficio único
     desc: "Hear them before they see you. Features Active Noise Cancellation and a hot-swap battery system so you never have to pause to charge.",
-    link: "https://www.amazon.com/SteelSeries-Arctis-Nova-Pro-Wireless/dp/B09ZWCTPTX",
+    link: "https://amzn.to/4u9pBJg",
     image: "/auricular.webp",
     featured: false
   },
@@ -33,7 +33,7 @@ const products = [
     name: "Govee Glide Hexa Panels",
     tag: "Streamer Essential", // Tag de identidad
     desc: "Level up your background instantly. Smart RGBIC panels that sync with your game audio. The easiest way to make your setup look expensive.",
-    link: "https://www.amazon.com/Govee-Glide-Hexa-Light-Panels/dp/B099Z99W6M",
+    link: "https://amzn.to/4aQEFm7",
     image: "/luces.webp",
     featured: false
   },
@@ -42,7 +42,7 @@ const products = [
     name: "Shure MV7+ Podcast Mic",
     tag: "Broadcast Clarity", // Tag de calidad
     desc: "Stop sounding like you're in a tin can. Studio-grade voice isolation with USB simplicity. Your teammates (and chat) will thank you.",
-    link: "https://www.amazon.com/Shure-MV7-Podcast-Microphone-Touch/dp/B0D1898RMC",
+    link: "https://amzn.to/3ZRO08j",
     image: "/microfono.webp",
     featured: false
   }
