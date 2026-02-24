@@ -66,7 +66,7 @@ const TopPicks = () => {
         
         <div className="row g-4">
           {products.map((product) => (
-            <div key={product.id} className={product.featured ? "col-lg-12" : "col-lg-6 col-xl-3"}>
+            <div key={product.id} className={product.featured ? "col-12" : "col-12 col-sm-6 col-lg-6 col-xl-3"}>
               <motion.div 
                 whileHover={{ y: -10 }}
                 className="product-card h-100 d-flex flex-column justify-content-between p-4"
@@ -76,8 +76,9 @@ const TopPicks = () => {
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                   backgroundRepeat: 'no-repeat',
-                  borderRadius: '15px', // Un pequeño borde redondeado para estética moderna
-                  boxShadow: '0 10px 30px rgba(0,0,0,0.5)' // Sombra para profundidad
+                  borderRadius: '15px',
+                  minHeight: product.featured ? '400px' : '350px', // Altura mínima para mantener proporción
+                  boxShadow: '0 10px 30px rgba(0,0,0,0.5)'
                 }}
               >
                 <div>

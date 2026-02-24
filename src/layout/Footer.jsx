@@ -24,8 +24,8 @@ const Footer = () => {
       ></div>
       
       <div className="container">
-        <div className="row align-items-center">
-          <div className="col-md-6 text-center text-md-start mb-3 mb-md-0">
+        <div className="row align-items-center gy-3">
+          <div className="col-md-6 text-center text-md-start">
             <p className="mb-2" style={{ fontFamily: 'Orbitron, sans-serif', fontSize: '0.9rem' }}>
               © 2026 <span style={{ color: 'var(--accent-color)' }}>FocusGaming</span>. All rights reserved.
             </p>

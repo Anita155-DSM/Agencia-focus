@@ -48,6 +48,7 @@ h1, h2, h3, .navbar-brand {
 
 .text-gradient {
   background: linear-gradient(90deg, var(--accent-color), var(--purple-glow));
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: bold;
@@ -372,4 +373,244 @@ h1, h2, h3, .navbar-brand {
   background: rgba(112, 0, 255, 0.15);
   box-shadow: 0 0 30px rgba(112, 0, 255, 0.6), 0 4px 20px rgba(112, 0, 255, 0.4);
   transform: translateY(-3px) scale(1.05);
+}
+
+/* ==========================================================================
+   6. RESPONSIVE STYLES - MEDIA QUERIES
+   ========================================================================== */
+
+/* --- NAVBAR RESPONSIVE --- */
+@media (max-width: 991.98px) {
+  /* Navbar collapsa en dispositivos menores a lg */
+  .navbar-collapse {
+    background: rgba(5, 7, 10, 0.98);
+    backdrop-filter: blur(20px);
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin-top: 1rem;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+  }
+
+  .navbar-nav {
+    gap: 0.5rem;
+  }
+
+  .nav-link {
+    padding: 12px 16px !important;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .nav-link:hover {
+    background: rgba(0, 242, 255, 0.1);
+  }
+
+  /* Ajusta el botón toggler */
+  .navbar-toggler {
+    padding: 0.5rem;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  .navbar-toggler:focus {
+    box-shadow: none !important;
+  }
+
+  /* Oculta efectos eléctricos en móvil para mejor rendimiento */
+  .electric-bolt-container,
+  .nav-hover-bg {
+    display: none;
+  }
+}
+
+/* --- HERO SECTION RESPONSIVE --- */
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 85vh;
+    padding-top: calc(var(--nav-height) + 20px);
+    background-attachment: scroll; /* Mejora rendimiento en móvil */
+  }
+
+  .hero-section h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  .hero-section p.lead {
+    font-size: 0.95rem;
+    padding: 0 10px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+    padding: 0 20px;
+  }
+
+  .hero-buttons a {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-section h1 {
+    font-size: 1.75rem;
+  }
+
+  .hero-section p.lead {
+    font-size: 0.9rem;
+  }
+}
+
+/* --- BUTTONS RESPONSIVE --- */
+@media (max-width: 768px) {
+  .btn-amazon, .btn-outline {
+    padding: 14px 24px;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+  }
+
+  .btn-amazon:hover,
+  .btn-outline:hover {
+    transform: translateY(-2px) scale(1.02);
+  }
+}
+
+@media (max-width: 576px) {
+  .btn-amazon, .btn-outline {
+    padding: 12px 20px;
+    font-size: 0.75rem;
+  }
+}
+
+/* --- PRODUCT CARDS RESPONSIVE --- */
+@media (max-width: 768px) {
+  .product-card {
+    padding: 1.5rem !important;
+    min-height: 300px !important;
+  }
+
+  .product-card h3 {
+    font-size: 1.25rem !important;
+  }
+
+  .product-card p {
+    font-size: 0.85rem !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .product-card {
+    padding: 1.25rem !important;
+    min-height: 280px !important;
+  }
+}
+
+/* --- GUIDE CARDS & VIDEO CARDS RESPONSIVE --- */
+@media (max-width: 768px) {
+  .guide-card {
+    height: auto !important;
+    min-height: 320px;
+  }
+
+  .video-card {
+    height: 250px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .guide-card {
+    min-height: 300px;
+  }
+
+  .video-card {
+    height: 220px !important;
+  }
+}
+
+/* --- CONTACT SECTION RESPONSIVE --- */
+@media (max-width: 768px) {
+  #contact h2 {
+    font-size: 2rem !important;
+  }
+
+  #contact p.lead {
+    font-size: 0.95rem;
+  }
+
+  #contact .badge {
+    font-size: 0.75rem;
+  }
+}
+
+/* --- TYPOGRAPHY RESPONSIVE --- */
+@media (max-width: 768px) {
+  h1, .display-1 { font-size: 2.5rem; }
+  h2, .display-2 { font-size: 2rem; }
+  h3, .display-3 { font-size: 1.75rem; }
+  .display-4 { font-size: 1.5rem; }
+  .display-5 { font-size: 1.35rem; }
+  .display-6 { font-size: 1.15rem; }
+}
+
+@media (max-width: 576px) {
+  h1, .display-1 { font-size: 2rem; }
+  h2, .display-2 { font-size: 1.75rem; }
+  h3, .display-3 { font-size: 1.5rem; }
+  .display-4 { font-size: 1.35rem; }
+  .display-5 { font-size: 1.2rem; }
+  .display-6 { font-size: 1rem; }
+}
+
+/* --- FOOTER RESPONSIVE --- */
+@media (max-width: 768px) {
+  .footer-gaming {
+    padding: 3rem 0 !important;
+  }
+
+  .footer-gaming .row {
+    text-align: center;
+  }
+
+  .footer-gaming .d-flex {
+    justify-content: center !important;
+  }
+}
+
+/* --- SPACING & PADDING ADJUSTMENTS --- */
+@media (max-width: 768px) {
+  section {
+    padding: 3rem 0 !important;
+  }
+
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  section {
+    padding: 2rem 0 !important;
+  }
+
+  .py-5 {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+}
+
+/* --- BADGE & SMALL ELEMENTS RESPONSIVE --- */
+@media (max-width: 576px) {
+  .badge {
+    font-size: 0.7rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  small, .small {
+    font-size: 0.75rem;
+  }
 }

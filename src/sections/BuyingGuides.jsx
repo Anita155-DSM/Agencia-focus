@@ -27,13 +27,14 @@ const guides = [
 const BuyingGuides = () => {
   // Definimos las alturas: Grande -> Mediano -> Chico
   const cardHeights = ['400px', '340px', '280px'];
+  const cardHeightsMobile = ['350px', '320px', '300px']; // Alturas más uniformes en móvil
 
   return (
     <section id="guides" className="py-5">
       <div className="container">
         
         {/* --- SECCIÓN 1: ARTÍCULOS (Escalerita Descendente: Grande -> Chico) --- */}
-        <div className="d-flex justify-content-between align-items-end mb-5">
+        <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-end mb-5 gap-3">
           <div>
             <h6 className="text-uppercase" style={{ color: 'var(--accent-color)', letterSpacing: '2px' }}>Knowledge Base</h6>
             <h2 className="text-white mb-0" style={{ fontFamily: 'Orbitron, sans-serif' }}>BUYING GUIDES</h2>
@@ -53,7 +54,7 @@ const BuyingGuides = () => {
                 className="guide-card p-0 overflow-hidden"
                 style={{ 
                   // AQUÍ ESTÁ LA MAGIA: Altura dinámica según el índice
-                  height: cardHeights[index], 
+                  height: window.innerWidth < 768 ? cardHeightsMobile[index] : cardHeights[index],
                   background: 'var(--glass-bg)', 
                   borderRadius: '12px', 
                   border: '1px solid var(--accent-color)',

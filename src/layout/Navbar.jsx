@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Zap, Home, MousePointer2, BookOpen, Mail } from 'lucide-react';
+import { Zap, Home, MousePointer2, BookOpen, Mail, Menu, X } from 'lucide-react';
 
 const navLinks = [
   { name: 'HOME', href: '#home', icon: <Home size={18} /> },
@@ -12,7 +12,8 @@ const navLinks = [
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [hoveredLink, setHoveredLink] = useState(null);
-  const [clickedLink, setClickedLink] = useState(null); // Estado para el rayo al click
+  const [clickedLink, setClickedLink] = useState(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -23,7 +24,8 @@ const Navbar = () => {
   // Función para disparar el rayo
   const handleElectricClick = (name) => {
     setClickedLink(name);
-    setTimeout(() => setClickedLink(null), 400); // El rayo dura 400ms
+    setIsMobileMenuOpen(false); // Cierra el menú móvil al hacer click
+    setTimeout(() => setClickedLink(null), 400);
   };
 
   return (
@@ -31,14 +33,28 @@ const Navbar = () => {
       <div className="container">
         <motion.a 
           className="navbar-brand d-flex align-items-center" 
-          href="#"
+          href="#home"
           whileTap={{ scale: 0.95 }}
         >
           <Zap className="me-2 text-cyan" fill="currentColor" size={24} />
           <span className="text-gradient">FOCUSGAMING</span>
         </motion.a>
 
-        <div className="collapse navbar-collapse" id="navbarNav">
+        {/* Botón Hamburguesa para Móviles */}
+        <button
+          className="navbar-toggler border-0"
+          type="button"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle navigation"
+        >
+          {isMobileMenuOpen ? (
+            <X size={28} className="text-cyan" />
+          ) : (
+            <Menu size={28} className="text-cyan" />
+          )}
+        </button>
+
+        <div className={`collapse navbar-collapse ${isMobileMenuOpen ? 'show' : ''}`} id="navbarNav">
           <ul className="navbar-nav ms-auto position-relative">
             {navLinks.map((link) => (
               <li 

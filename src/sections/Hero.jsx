@@ -40,7 +40,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="hero-buttons d-flex justify-content-center gap-3"
+          className="hero-buttons d-flex flex-column flex-sm-row justify-content-center gap-3"
         >
           <a href="#top-picks" className="btn-amazon px-4">SHOP THE ELITE LIST</a>
           <a href="#guides" className="btn-outline px-4">EXPLORE GUIDES</a>

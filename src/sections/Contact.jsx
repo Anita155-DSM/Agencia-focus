@@ -43,9 +43,9 @@ const Contact = () => {
 
   return (
     <section id="contact" className="py-5">
-      <div className="container py-5">
+      <div className="container py-3 py-md-5">
         
-        <div className="row justify-content-center align-items-center g-5">
+        <div className="row justify-content-center align-items-center g-4 g-md-5">
           
           <div className="col-lg-5">
             <motion.div
@@ -54,7 +54,7 @@ const Contact = () => {
               transition={{ duration: 0.8 }}
             >
               <h6 className="text-cyan mb-2" style={{ letterSpacing: '3px' }}>HQ COMM-LINK</h6>
-              <h2 className="text-white display-5 fw-bold mb-4" style={{ fontFamily: 'Orbitron, sans-serif' }}>
+              <h2 className="text-white display-6 display-md-5 fw-bold mb-4" style={{ fontFamily: 'Orbitron, sans-serif' }}>
                 GET IN <br /> <span className="text-gradient">TOUCH</span>
               </h2>
               
@@ -93,7 +93,7 @@ const Contact = () => {
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="p-5 position-relative overflow-hidden"
+              className="p-4 p-md-5 position-relative overflow-hidden"
               style={{ 
                 background: 'rgba(13, 17, 23, 0.6)', 
                 backdropFilter: 'blur(20px)',
